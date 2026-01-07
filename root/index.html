@@ -1,0 +1,59 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><p><img src="https://avatars.githubusercontent.com/u/53260526?s=400&u=9fd82f767e66beeb3959efaf11be707dd4209c96&v=4" width="200px"> </p>
+<h1 id="dandi-distributed-archives-for-neurophysiology-data-integration">DANDI: Distributed Archives for Neurophysiology Data Integration</h1>
+<p>DANDI is a public archive of neurophysiology datasets, including raw and 
+processed data, and associated software containers. Datasets are shared according 
+to a Creative Commons CC0 or CC-BY licenses. This US BRAIN Initiative supported 
+data archive publishes and shares neurophysiology data including electrophysiology, 
+optophysiology, and behavioral time-series, and images from immunostaining 
+experiments. </p>
+<p>The data uses a set of community standards: </p>
+<ul>
+<li>NWB: Neurodata Without Borders</li>
+<li>BIDS: Brain Imaging Data Structure</li>
+<li>NIDM: Neuro Imaging Data Model</li>
+<li>NGFF: Next Generation File Format</li>
+</ul>
+<p>Development of DANDI is supported by the National Institute of Mental Health.</p>
+<h2 id="dandisets">Dandisets</h2>
+<p>We define a DANDI dataset as a Dandiset. A Dandiset is an organized collection of 
+assets (files) with both file level and dataset level metadata generated from an 
+experiment or a project.</p>
+<h3 id="web-resources">Web resources</h3>
+<ul>
+<li>Web interface: <a href="https://dandiarchive.org/">https://dandiarchive.org/</a></li>
+<li>API: <a href="https://api.dandiarchive.org/swagger/">https://api.dandiarchive.org/swagger/</a></li>
+<li>Handbook: <a href="https://handbook.dandiarchive.org">https://handbook.dandiarchive.org</a></li>
+<li>Helpdesk: <a href="https://github.com/dandi/helpdesk/issues/new/choose">https://github.com/dandi/helpdesk/issues/new/choose</a></li>
+<li>Github: <a href="https://github.com/dandi">https://github.com/dandi</a></li>
+<li>S3 Location: s3://dandiarchive/</li>
+<li>DANDI Hub (a Jupyterhub instance): <a href="https://hub.dandiarchive.org/">https://hub.dandiarchive.org/</a> (Requires registration via the Web interface)</li>
+</ul>
+<h3 id="organization-of-the-s3-bucket">Organization of the S3 bucket</h3>
+<ul>
+<li><strong>blobs</strong> - This key store houses the actual binary data indexed by unique keys. This
+is done to provide deduplication when publishing new datasets containing existing
+data.</li>
+<li><strong>dandisets</strong> - Information about each Dandiset including metadata, a manifest of 
+all assets contained in a Dandiset, and asset metadata. This information should
+allow anyone to access all the data relevant to a Dandiset </li>
+</ul>
+<p>Other prefixes in the bucket can be ignored. For example:</p>
+<ul>
+<li><em>dandiarchive</em> - This folder stores an inventory listing of all items in the bucket. 
+This is generated automatically by the S3 Inventory service.</li>
+</ul>
+<h4 id="keywords-">Keywords:</h4>
+<ul>
+<li>biology </li>
+<li>cell imaging</li>
+<li>electrophysiology </li>
+<li>infrastructure </li>
+<li>life sciences </li>
+<li>neuroimaging </li>
+<li>neurophysiology </li>
+<li>neuroscience</li>
+</ul>
+</body></html>
