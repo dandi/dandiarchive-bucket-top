@@ -11,7 +11,7 @@ Preliminary idea is that the source of truth for README.md would be within the h
 We will keep that https://github.com/awslabs/open-data-registry/ git repo as subdataset under sourcedata/open-data-registry with a fork on our DANDI archive (https://github.com/dandi/open-data-registry) -- that is already done.
 The schema for that yaml is thus readily available under sourcedata/open-data-registry/schema.yaml .
 
-Then we would sync bucket to/from `top_content/` folder.
+Then we would sync bucket to/from `root/` folder.
 `code/` folder should provide script to 'sync' (using e.g. aws CLI), and README.md on top level of this repo should describe the purpose of this repository.
 
 `Makefile` on top of this repo should have invocations for syncing to centralize potential actions to be taken.
