@@ -1,0 +1,4 @@
+[submodule "sourcedata/open-data-registry"]
+	path = sourcedata/open-data-registry
+	url = https://github.com/dandi/open-data-registry
+	datalad-url = https://github.com/dandi/open-data-registry
