@@ -3,9 +3,35 @@
 
 import re
 import sys
+import textwrap
 from pathlib import Path
 
 import yaml
+
+# Target width for text wrapping
+WRAP_WIDTH = 80
+
+
+def wrap_paragraph(text: str, width: int = WRAP_WIDTH) -> str:
+    """Wrap a paragraph to specified width."""
+    return textwrap.fill(text, width=width)
+
+
+def wrap_list_item(text: str, width: int = WRAP_WIDTH) -> str:
+    """Wrap a list item, indenting continuation lines."""
+    if not text.startswith("- "):
+        return text
+    # Find the content after "- "
+    prefix = "- "
+    content = text[2:]
+    # Wrap with subsequent indent of 2 spaces
+    wrapper = textwrap.TextWrapper(
+        width=width,
+        initial_indent="",
+        subsequent_indent="  ",
+    )
+    wrapped = wrapper.fill(content)
+    return prefix + wrapped
 
 
 def strip_markdown_links(text: str) -> str:
@@ -94,7 +120,7 @@ def generate_readme(yaml_path: Path) -> str:
 
     # Introduction paragraph
     if desc["intro"]:
-        lines.append(' '.join(desc["intro"]))
+        lines.append(wrap_paragraph(' '.join(desc["intro"])))
         lines.append("")
 
     # Standards list
@@ -112,9 +138,12 @@ def generate_readme(yaml_path: Path) -> str:
     # Dandisets section
     lines.append("## Dandisets")
     lines.append("")
-    lines.append("We define a DANDI dataset as a Dandiset. A Dandiset is an organized collection of")
-    lines.append("assets (files) with both file level and dataset level metadata generated from an")
-    lines.append("experiment or a project.")
+    dandisets_text = (
+        "We define a DANDI dataset as a Dandiset. A Dandiset is an organized "
+        "collection of assets (files) with both file level and dataset level "
+        "metadata generated from an experiment or a project."
+    )
+    lines.append(wrap_paragraph(dandisets_text))
     lines.append("")
 
     # Web resources section
@@ -159,7 +188,11 @@ def generate_readme(yaml_path: Path) -> str:
     # JupyterHub from Tools
     for tool in tools:
         if "JupyterHub" in tool.get("Title", ""):
-            lines.append(f"- DANDI Hub (a JupyterHub instance): {tool['URL']} (Requires registration via the Web interface)")
+            hub_line = (
+                f"- DANDI Hub (a JupyterHub instance): {tool['URL']} "
+                "(Requires registration via the Web interface)"
+            )
+            lines.append(wrap_list_item(hub_line))
             break
 
     lines.append("")
@@ -169,15 +202,17 @@ def generate_readme(yaml_path: Path) -> str:
     lines.append("")
 
     for key, description in desc["bucket_org"]:
-        lines.append(f"- **{key}** - {description}")
+        lines.append(wrap_list_item(f"- **{key}** - {description}"))
 
     lines.append("")
 
     # Other prefixes note
     lines.append("Other prefixes in the bucket can be ignored. For example:")
     lines.append("")
-    lines.append("- _dandiarchive_ - This folder stores an inventory listing of all items in the bucket.")
-    lines.append("  This is generated automatically by the S3 Inventory service.")
+    lines.append(wrap_list_item(
+        "- _dandiarchive_ - This folder stores an inventory listing of all items "
+        "in the bucket. This is generated automatically by the S3 Inventory service."
+    ))
     lines.append("")
 
     # Tools & Applications section
