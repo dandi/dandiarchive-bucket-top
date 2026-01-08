@@ -1,6 +1,12 @@
 # DANDI: Distributed Archives for Neurophysiology Data Integration
 
-DANDI is a public archive of neurophysiology datasets, including raw and processed data, and associated software containers. Datasets are shared according to Creative Commons CC0 or CC-BY licenses. This US BRAIN Initiative supported archive provides a broad range of cellular neurophysiology data including intracellular and extracellular electrophysiology, optophysiology, calcium imaging, fiber photometry, behavioral time-series, and images from immunostaining experiments, from over 20 species.
+DANDI is a public archive of neurophysiology datasets, including raw and
+processed data, and associated software containers. Datasets are shared
+according to Creative Commons CC0 or CC-BY licenses. This US BRAIN Initiative
+supported archive provides a broad range of cellular neurophysiology data
+including intracellular and extracellular electrophysiology, optophysiology,
+calcium imaging, fiber photometry, behavioral time-series, and images from
+immunostaining experiments, from over 20 species.
 
 The data uses a set of community standards:
 - NWB: Neurodata Without Borders
@@ -12,9 +18,9 @@ Development of DANDI is supported by the National Institute of Mental Health.
 
 ## Dandisets
 
-We define a DANDI dataset as a Dandiset. A Dandiset is an organized collection of
-assets (files) with both file level and dataset level metadata generated from an
-experiment or a project.
+We define a DANDI dataset as a Dandiset. A Dandiset is an organized collection
+of assets (files) with both file level and dataset level metadata generated from
+an experiment or a project.
 
 ### Web resources
 
@@ -24,18 +30,21 @@ experiment or a project.
 - Helpdesk: https://github.com/dandi/helpdesk/issues/new/choose
 - Github: https://github.com/dandi
 - S3 Location: s3://dandiarchive/
-- DANDI Hub (a JupyterHub instance): https://hub.dandiarchive.org/ (Requires registration via the Web interface)
+- DANDI Hub (a JupyterHub instance): https://hub.dandiarchive.org/ (Requires
+  registration via the Web interface)
 
 ### Organization of the S3 bucket
 
-- **dandisets** - Metadata and manifests for each Dandiset version; manifests reference keys under blobs/ or zarrs/ for actual data. See DANDI schema for manifest format specifications.
+- **dandisets** - Metadata and manifests for each Dandiset version; manifests
+  reference keys under blobs/ or zarrs/ for actual data. See DANDI schema for
+  manifest format specifications.
 - **blobs** - Deduplicated binary data (NWB files) indexed by content hash.
 - **zarrs** - Zarr arrays for large imaging datasets.
 
 Other prefixes in the bucket can be ignored. For example:
 
-- _dandiarchive_ - This folder stores an inventory listing of all items in the bucket.
-  This is generated automatically by the S3 Inventory service.
+- _dandiarchive_ - This folder stores an inventory listing of all items in the
+  bucket. This is generated automatically by the S3 Inventory service.
 
 ### Tools & Applications
 
