@@ -102,7 +102,10 @@ resources from `resources.yaml`, ARN format, etc.). Validation must pass before 
   - Reference tutorials from dandi-docs (https://docs.dandiarchive.org/example-notebooks/dandi/DANDI%20User%20Guide%2C%20Part%20II/ and there on)
   - Link to example notebooks (https://dandi.github.io/example-notebooks/)
 - [ ] Add `Publications` section under `DataAtWork`:
-  - DANDI-related publications
+  - Fetch/convert publications from Zotero collection:
+    https://www.zotero.org/groups/5774211/dandi/collections/JW4RQA7A
+    (API: https://api.zotero.org/groups/5774211/collections/JW4RQA7A/items?format=json)
+  - Currently 3 publications listed there
 - [ ] Review and add `Tools & Applications` from DANDI archive's integrated external services:
   - See https://github.com/dandi/dandi-archive/blob/master/web/src/utils/externalServices.ts
     (EXTERNAL_SERVICES constant)
