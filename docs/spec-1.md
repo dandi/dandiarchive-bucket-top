@@ -84,6 +84,12 @@ pykwalify -d datasets/dandiarchive.yaml -s schema.yaml
 The schema.yaml references `ext.py` for custom validation functions (tags from `tags.yaml`,
 resources from `resources.yaml`, ARN format, etc.). Validation must pass before committing.
 
+**Important guidelines**:
+- Do NOT modify `RegistryEntryAdded` or `RegistryEntryLastModified` fields - these are
+  auto-populated from git history by upstream's `add_metadata.sh` script
+- Do NOT include size estimates (e.g., "350+ TB") - these change frequently
+- For dandi-cli, describe as "CLI and Python API" (not just CLI)
+
 - [ ] Review other dataset records under `sourcedata/open-data-registry/datasets/`
   for inspiration, especially similar archives like `openneuro.yaml`, and improve
   the dandiarchive description accordingly
@@ -97,6 +103,10 @@ resources from `resources.yaml`, ARN format, etc.). Validation must pass before 
   - Link to example notebooks (https://dandi.github.io/example-notebooks/)
 - [ ] Add `Publications` section under `DataAtWork`:
   - DANDI-related publications
+- [ ] Review and add `Tools & Applications` from DANDI archive's integrated external services:
+  - See https://github.com/dandi/dandi-archive/blob/master/web/src/utils/externalServices.ts
+    (EXTERNAL_SERVICES constant)
+  - Include: Neurosift, NWBExplorer, Neuroglancer, NeuroGlass, ITK/VTK Viewer, etc.
 - [ ] Consider adding:
   - NGFF/Zarr access tutorial
   - Streaming NWB data examples
