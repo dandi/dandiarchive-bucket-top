@@ -3,4 +3,5 @@ all:
 
 from_bucket:
 	mkdir -p root/
-	aws s3 sync s3://dandiarchive/ root/ --no-sign-request --exclude "*/*"
+	aws s3 ls --no-sign-request s3://dandiarchive/ | awk '{print $$NF}' | grep -v '/$$' \
+		| xargs -I{} aws s3 cp s3://dandiarchive/{} root/ --no-sign-request
